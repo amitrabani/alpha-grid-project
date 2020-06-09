@@ -1,4 +1,3 @@
-import React from 'react';
 import { changeGrid } from './gridUtils';
 
 describe("Grid Utils", () => {
