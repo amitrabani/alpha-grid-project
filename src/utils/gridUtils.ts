@@ -1,10 +1,10 @@
 import cloneDeep from 'lodash/cloneDeep'
 
-const applyRules = (sum: number, currentCell: number) =>{
+const applyRules = (sum: number, currentCellValue: number) =>{
     if (sum < 2) return 0;
     if (sum > 3) return 0;
-    if (sum === 3 && currentCell === 0) return 1;
-    if ((sum === 2 || sum === 3) && currentCell === 1) return 1; 
+    if (sum === 3 && currentCellValue === 0) return 1;
+    if ((sum === 2 || sum === 3) && currentCellValue === 1) return 1; 
     return 0
   }
 
@@ -30,7 +30,9 @@ const applyRules = (sum: number, currentCell: number) =>{
         const surroundingCells = getSurroundingCells(i, j)
         let sum = 0
         Object.values(surroundingCells).forEach(([surroundingCellX, surroundingCellY]) => {
-        sum +=  grid[surroundingCellX] !== undefined && grid[surroundingCellX][surroundingCellY] !== undefined ? grid[surroundingCellX][surroundingCellY]: 0;
+        sum += grid[surroundingCellX] !== undefined &&
+         grid[surroundingCellX][surroundingCellY] !== undefined ?
+         grid[surroundingCellX][surroundingCellY]: 0;
         })   
         newGrid[i][j] = applyRules(sum, grid[i][j])     
       }
